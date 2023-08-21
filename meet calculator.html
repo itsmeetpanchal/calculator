@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 87.3vh;
+            background-image: url(cal.jpg);
+            background-size: 100% 100%;
+            user-select: none;
+        }
+
+        .container {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            margin: 80px auto;
+        }
+
+        .calculator {
+            border: 1px dashed lightgrey;
+            border-radius: 8px;
+            box-shadow: 0 0 12px black;
+            height: 500px;
+            padding: 10px;
+            background: black;
+            padding: 15px;
+            padding-top: 20px;
+        }
+
+        input {
+            font-size: 25px;
+            padding: 10px;
+        }
+
+        .line1 {
+            /* font-size: 0px; */
+            /* border: 2px solid black; */
+            margin-top: 25px;
+            text-align: center;
+            /* padding: px; */
+        }
+
+        .line1 button,
+        span {
+            padding: 5px;
+            font-size: 22px;
+            font-weight: bold;
+            border-radius: 50%;
+            height: 60px;
+            width: 60px;
+            margin-left: 10px;
+            margin-right: 10px;
+            border: none;
+            box-shadow: 0 0 10px black inset;
+            border: 2px dashed rgba(128, 128, 128, 0.431);
+        }
+
+        .span1 {
+            /* display: inline-block; */
+            padding: 15px;
+            color: black;
+            background: lightgray;
+
+        }
+
+        .btn0 {
+            display: inline-block;
+            /* padding-top: 15px; */
+            width: 100px;
+            
+            padding: 15px;
+            padding-bottom: 0;
+            border-radius: 40px;
+            font-size: 35px;
+        }
+
+        .firstline button {
+            background: lightgray;
+        }
+
+        .orgline button {
+            background: rgb(68, 64, 64);
+            color: white;
+        }
+
+        .lastline button {
+            background: rgb(68, 64, 64);
+            color: white;
+        }
+
+        .btn0 {
+            background: orange;
+            color: white;
+        }
+
+        .firstline button:last-child {
+            color: white;
+            background: orange;
+        }
+
+        .orgline button:last-child {
+            background: orange;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="container">
+
+            <div class="calculator">
+
+                <input type="text" class="in" id="in">
+
+                <div class="line1 firstline">
+                    <span id="AC" onclick="ac()" class="span1">AC</span>
+                    <span id="d" onclick="ce()" class="span1">CE</span>
+                    <button>%</button>
+                    <button>/</button>
+                </div>
+                <div class="line1 orgline">
+                    <button>7</button>
+                    <button>8</button>
+                    <button>9</button>
+                    <button>*</button>
+                </div>
+                <div class="line1 orgline">
+                    <button>4</button>
+                    <button>5</button>
+                    <button>6</button>
+                    <button>-</button>
+                </div>
+                <div class="line1 orgline">
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>+</button>
+                </div>
+                <div class="line1 lastline">
+                    <button>0</button>
+                    <button>.</button>
+                    <span class="btn0" onclick="equalto()">=</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+        var input_value = document.getElementById('in');
+        var btn = document.querySelectorAll('button');
+        btn.forEach((el) => {
+            el.addEventListener('click', () => {
+                input_value.value = input_value.value + el.innerHTML;
+            })
+        })
+
+        function ac() {
+            input_value.value = "";
+        }
+        function equalto() {
+            input_value.value = eval(input_value.value);
+        }
+        function ce() {
+            input_value.value = input_value.value.slice(0, -1);
+        }
+
+
+    </script>
+</body>
+
+</html>
